@@ -15,6 +15,8 @@
 
 获取目标 IP 地址后，我们可以使用 Nmap 扫描开放端口：
 
+> [!NOTE]
+>
 > Nmap（Network Mapper）是一款免费、开源的网络扫描工具，用于主机发现、端口扫描、服务检测、操作系统指纹识别和安全审计。
 
 ```
@@ -40,6 +42,8 @@ nmap machine_ip
 
 我使用 Gobuster 来查找 Web 服务器上的隐藏目录：
 
+> [!NOTE]
+>
 > Gobuster 是一款高性能的开源命令行工具，专为目录、文件、DNS 子域名和虚拟主机的暴力破解而设计。
 
 ```
@@ -79,12 +83,12 @@ gobuster dir -u http://machine_ip -w /usr/share/wordlists/dirbuster/directory-li
 
 ## 经验教训
 
-* 漏洞：主要漏洞是 PDF 生成过程中，通过用户输入导致的 SSRF
+* 漏洞：主要漏洞是 PDF 生成过程中，通过用户输入导致的 SSRF[^1]
 * 影响：这允许攻击者访问内部服务（如 5000 端口上的服务）并获取信息（flag）
 * 缓解措施：对用户输入进行清理，并为允许的 URL 方案实施白名单。
 
-## 注意：
-什么是 SSRF？（服务器端请求伪造）—— 这是一种计算机安全漏洞，使攻击者能够从存在漏洞的服务器向内部或外部系统或服务器本身发送请求。
+
+[^1]: SSRF（服务器端请求伪造）—— 这是一种计算机安全漏洞，使攻击者能够从存在漏洞的服务器向内部或外部系统或服务器本身发送请求。
 </details>
 
 ---
@@ -99,6 +103,8 @@ The goal was to exploit a web application that converts text to PDF to access a 
 
 After getting machine IP, we can scan it to search for open ports using Nmap:
 
+> [!NOTE]
+> 
 > Nmap (Network Mapper) is a free, open-source network scanning tool used for host discovery, port scanning, service detection, operating system fingerprinting, and security auditing.
 
 ```
@@ -123,6 +129,8 @@ This page is similiar to the previous one, but the "Convert to PDF" button was u
 
 I used Gobuster to find hidden directories on the web server:
 
+> [!NOTE]
+> 
 > Gobuster is a high-performance, open-source command-line tool, designed for directory, file, DNS subdomain, and virtual host brute-forcing.
 
 ```
@@ -162,9 +170,8 @@ The PDF displayed the contents of the `127.0.0.1:5000/admin` page, revealing the
 
 ## Lessons Learned
 
-* Vulnerability: The main vulnerability was an **SSRF** in the PDF generation, by user input
+* Vulnerability: The main vulnerability was an **SSRF[^1]** in the PDF generation, by user input
 * Impact: This allowed an attacker to access internal services (like on port 5000) and retrieve information (the flag)
 * Mitigation: Sanitize user input and implement a whitelist for allowed URL schemes.  
 
-## Note
-What's SSRF? (Server-side request forgery) - it's a computer security vulnerability that enables an attacker to send requests from a vulnerable server to internal or external systems or the server itself.
+[^1]: SSRF (Server-side request forgery) - it's a computer security vulnerability that enables an attacker to send requests from a vulnerable server to internal or external systems or the server itself.
