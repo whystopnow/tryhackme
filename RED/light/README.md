@@ -23,6 +23,8 @@
 
 获取到机器IP后，我们可以用 Netcat 连接到它：
 
+> [!NOTE]
+> 
 > Netcat（通常缩写为 nc）是一个多功能命令行实用程序，旨在使用 TCP 或 UDP 协议通过网络连接读取和写入数据。netcat 反向shell允许目标系统连接回攻击者的机器，通过发起出站连接来绕过入站防火墙限制。
 
 ```
@@ -33,6 +35,8 @@ nc machine_ip 1337
 
 我们看到一行（或表单）读取我们的输入并给出输出。如果你看到类似这样的东西（例如网站中的登录页面），你必须测试它是否是 SQL。
 
+> [!NOTE]
+> 
 > SQL 代表结构化查询语言，是一种标准化的编程语言，用于与关系数据库通信和操作。它允许用户创建、检索、更新和删除存储在由行和列组成的表中的数据。
 
 要测试它，你只需输入：`'`（单引号）并按 Enter。
@@ -179,6 +183,8 @@ We got three questions here:
 
 After getting machine IP, we can connect to it with Netcat:
 
+> [!NOTE]
+> 
 > Netcat (often abbreviated as nc) is a versatile command-line utility designed to read and write data across network connections using TCP or UDP protocols. A netcat reverse shell allows a target system to connect back to an attacker's machine, bypassing inbound firewall restrictions by initiating an outbound connection.
 
 ```
@@ -189,6 +195,8 @@ nc machine_ip 1337
 
 We see a line (or form) that reads our input and gives us an output. If you ever see something like this (for example in login pages in websites), you have to test if it's SQL.
 
+> [!NOTE]
+> 
 > SQL stands for Structured Query Language, a standardized programming language used to communicate with and manipulate relational databases. It allows users to create, retrieve, update, and delete data stored in tables consisting of rows and columns.
 
 To test it out you can just type: `'` (single quote) and press Enter.
