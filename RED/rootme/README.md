@@ -26,6 +26,8 @@
 
 获取到机器IP后，我们可以使用 Nmap 扫描它以搜索开放端口：
 
+> [!NOTE]
+> 
 > Nmap（Network Mapper）是一款免费、开源的网络扫描工具，用于主机发现、端口扫描、服务检测、操作系统指纹识别和安全审计。
 
 ```
@@ -38,6 +40,8 @@ nmap -sC -sV machine_ip
 
 我们得到了两个开放端口：22（ssh）和 80（http）。Apache 版本是 2.4.41。现在让我们使用 ffuf 工具而不是 GoBuster 来查找隐藏目录。
 
+> [!NOTE]
+> 
 > 在复杂的 Web 模糊测试中，ffuf 通常被认为比 Gobuster 更好，因为它具有灵活性和高级过滤功能。虽然这两个工具都很快并且用 Go 编写，但 ffuf 使用 FUZZ 关键字，可以放在 HTTP 请求的任何位置（URL、标头、正文、参数），而 Gobuster 主要用于将路径附加到 URL。
 
 ```
@@ -100,6 +104,8 @@ $write_a = null;
 
 为了让我们的表单工作并获取反向shell，我们还需要用 netcat 工具建立连接。在你的终端中运行这个命令：
 
+> [!NOTE]
+> 
 > Netcat（通常缩写为 nc）是一个多功能命令行实用程序，旨在使用 TCP 或 UDP 协议通过网络连接读取和写入数据。netcat 反向shell允许目标系统连接回攻击者的机器，通过发起出站连接来绕过入站防火墙限制。
 
 ```
@@ -205,6 +211,8 @@ We got four questions here:
 
 After getting machine IP, we can scan it to search for open ports using Nmap:
 
+> [!NOTE]
+> 
 > Nmap (Network Mapper) is a free, open-source network scanning tool used for host discovery, port scanning, service detection, operating system fingerprinting, and security auditing.
 
 ```
@@ -217,7 +225,9 @@ Make sure to use `-sV` command for service version detection, because in one of 
 
 We got two open ports: 22 (ssh) and 80 (http). Apache version is 2.4.41 . Now let's find the hidden directory using ffuf tool, not GoBuster.
 
- > ffuf is generally considered better than Gobuster for complex web fuzzing due to its flexibility and advanced filtering capabilities.  While both tools are fast and written in Go, ffuf utilizes a FUZZ keyword that can be placed anywhere in an HTTP request (URL, headers, body, parameters), whereas Gobuster is primarily designed for appending paths to URLs.
+> [!NOTE]
+> 
+> ffuf is generally considered better than Gobuster for complex web fuzzing due to its flexibility and advanced filtering capabilities.  While both tools are fast and written in Go, ffuf utilizes a FUZZ keyword that can be placed anywhere in an HTTP request (URL, headers, body, parameters), whereas Gobuster is primarily designed for appending paths to URLs.
 
 ```
 ffuf -u http://machine_ip/FUZZ -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
@@ -285,6 +295,8 @@ And to make our form work and get a reverse shell we also need to set up the con
 nc -lvp 1234
 ```
 
+> [!NOTE]
+> 
 > The `-l` flag puts Netcat in listen mode to accept incoming connections, the `-v` flag enables verbose output to show connection details, and the `-p` flag specifies the local port to listen on.
 
 And while its running, reload the page and watch to your terminal.
@@ -319,6 +331,9 @@ And it reveals the first flag.
 2. **(And find) "root.txt"**
 
 Let's search for files with SUID permission:
+
+> [!NOTE]
+> 
 > What exactly is SUID? It is a setting that ensures a program runs with the privileges of a specific user, regardless of who actually executes it. So if the program have a SUID permission and it is owned by root, anyone can execute it.
 
 I ran this command:
