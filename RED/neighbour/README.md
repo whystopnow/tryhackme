@@ -20,6 +20,8 @@ http://machine_ip
 
 我们被重定向到 ```http://machine_ip/login.php``` 网页，在那里我们可以看到登录表单。既然这是关于 IDOR 的，让我们专注于它。
 
+> [!NOTE]
+> 
 > 不安全的直接对象引用（IDOR）是一种访问控制漏洞，当应用程序使用用户输入直接访问内部对象而不检查用户是否有权限时就会发生。
 > 该应用在 URL 或请求参数中暴露数据库 ID、文件名或账号。攻击者将链接中的 ID 号改为另一个值（比如把 id=101 改成 id=102）来查看或修改属于其他用户的数据。
 
@@ -89,6 +91,8 @@ http://machine_ip
 
 We're being redirected to ```http://machine_ip/login.php``` web page, where we can see login form. Since it's about IDOR, let's focus on that.
 
+> [!NOTE]
+> 
 > Insecure Direct Object References (IDOR) are an access control vulnerability that happens when an application uses user input to access internal objects directly without checking if the user has permission.
 The app exposes a database ID, file name, or account number in the URL or request parameters. An attacker changes the ID number in the link to another value (like switching id=101 to id=102) to view or change data belonging to other users.
 
